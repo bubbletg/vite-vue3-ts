@@ -1,5 +1,10 @@
 <template>
-  <h1>home</h1>
+  <h1 class="h1-test">
+    home
+    <div class="h1-test-div">
+      divdidklsadfj;lasedfjkal;sdj
+    </div>
+  </h1>
   <HelloWorldVue />
 </template>
 
@@ -9,5 +14,11 @@ import HelloWorldVue from '@/components/HelloWorld.vue'
 </script>
 
 <style lang="scss" scoped>
+.h1-test{
+  color:red;
+  &-div{
+    color: yellow;
+  }
+}
 
 </style>

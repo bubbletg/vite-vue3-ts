@@ -8,3 +8,8 @@
 import TSXTest from './TSXTest'
 const Abc = <h2>abc</h2>
 </script>
+<style lang="scss" scoped>
+h1{
+  color:$red;
+}
+</style>
