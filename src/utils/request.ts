@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 
 const request = axios.create({
   baseURL: 'https://shop.fe.lagou.com/api/admin'
@@ -16,4 +16,8 @@ request.interceptors.response.use(function (response) {
   return Promise.reject(err)
 })
 
-export default request
+export default <T=any>(config:AxiosRequestConfig) => {
+  return request(config).then(res => {
+    return res.data.data as T
+  })
+}

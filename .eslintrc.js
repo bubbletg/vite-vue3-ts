@@ -12,6 +12,15 @@ module.exports = {
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {},
+  overrides: [
+    {
+      // 对单个文件不使用驼峰命名法校验
+      files: ['src/api/**/*.ts'],
+      rules: {
+        camelcase: 'off'
+      }
+    }
+  ],
   globals: {
     defineProps: 'readonly',
     defineEmits: 'readonly',
