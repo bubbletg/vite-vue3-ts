@@ -1,4 +1,3 @@
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import eslintPlugin from 'vite-plugin-eslint'
@@ -6,9 +5,13 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [vue(), vueJsx(), eslintPlugin({
-    cache: false
-  })],
+  plugins: [
+    vue(),
+    vueJsx(),
+    eslintPlugin({
+      cache: false
+    })
+  ],
   resolve: {
     alias: {
       '@': path.join(__dirname, 'src')
@@ -18,6 +21,16 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: '@import "@/styles/variables.scss";'
+      }
+    }
+  },
+  server: {
+    proxy: {
+      '/admin': {
+        // target: 'https://shop.fed.lagou.com/api',
+        target: 'http://127.0.0.1:8888/api',
+        changeOrigin: true
+        // rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   }
